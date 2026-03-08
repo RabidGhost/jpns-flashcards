@@ -15,8 +15,8 @@
 #let frontface(card) = (text: card.front, info: card.front-info)
 #let backface(card) = (text: card.back, info: card.back-info)
 
-/// Pad an array with some value, so its length is a multiple of `n`
-#let padto(array, n, content: []) = {
+/// Pad the end of the array with `content`, so its length is a multiple of `n`
+#let padto(array, n, content: (text: [], info: [])) = {
     let diff-len = calc.rem(n - calc.rem(array.len(), n), n)
     let desired-len = array.len() + diff-len
 
