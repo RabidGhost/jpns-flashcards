@@ -1,8 +1,19 @@
 /// Default card size
-#let card = (
+#let card-size = (
     width: 91mm,
     height: 55mm,
 )
+
+
+#let card(english, einfo: [], japanese, jinfo: []) = (
+    front: english,
+    front-info: einfo,
+    back: japanese,
+    back-info: jinfo
+)
+
+#let frontface(card) = (text: card.front, info: card.front-info)
+#let backface(card) = (text: card.back, info: card.back-info)
 
 /// Pad an array with some value, so its length is a multiple of `n`
 #let padto(array, n, content: []) = {
@@ -20,29 +31,33 @@
     return output
 }
 
-#let every_nth(array, n, offset: 0) = array.chunks(n).map(it => it.at(offset))
-
 /// Layout flashcards into a list of pages, where each page has a front and back
 #let layout_cards(rows, columns, definitions) = {
-    return definitions.chunks(rows * columns * 2).map(defs => (
-        front: every_nth(defs, 2),
-        back: padto(every_nth(defs, 2, offset: 1), columns).chunks(columns).map(chunk => chunk.rev()).flatten()
+    return definitions.chunks(rows * columns).map(defs => (
+        front: defs.map(frontface),
+        back: padto(defs.map(backface), columns).chunks(columns).map(chunk => chunk.rev()).flatten()
     ))
 }
 
 /// Display the flashcard content
 #let flashcard(content) = {
-    align(center + horizon, content)
+    align(center + horizon)[
+        #content.text
+        #set text(fill: gray)
+
+        #emph(content.info)
+    ]
 }
 
 #let flashcards(
     rows: auto,
     columns: auto,
+    alignment: center,
     display: flashcard,
-    card: card,
+    card: card-size,
     lang: (front: "en", back: "en"),
     definitions
-) = layout(lay => [
+) = align(alignment, layout(lay => [
     #let rows = rows
     #let cols = columns
 
@@ -58,4 +73,4 @@
         set text(lang: lang.back)
         grid(..back.map(display))
     }
-])
+]))
