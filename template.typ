@@ -56,6 +56,7 @@
     display: flashcard,
     card: card-size,
     lang: (front: "en", back: "en"),
+    border-stroke: 0.2pt + gray,
     definitions
 ) = align(alignment, layout(lay => [
     #let rows = rows
@@ -68,7 +69,7 @@
 
     #for (front, back) in layout_cards(rows.len(), cols.len(), definitions) {
         set text(lang: lang.front)
-        grid(stroke: 1pt, ..front.map(display))
+        grid(stroke: border-stroke, ..front.map(display))
         colbreak()
         set text(lang: lang.back)
         grid(..back.map(display))
