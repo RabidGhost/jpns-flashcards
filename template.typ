@@ -42,8 +42,9 @@
 /// Display the flashcard content
 #let flashcard(content) = {
     align(center + horizon)[
+        #set text(size: 20pt, weight: "regular")
         #content.text
-        #set text(fill: gray)
+        #set text(size: 17pt, weight: "extralight")
 
         #emph(content.info)
     ]
