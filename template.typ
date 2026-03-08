@@ -20,11 +20,13 @@
     return output
 }
 
+#let every_nth(array, n, offset: 0) = array.chunks(n).map(it => it.at(offset))
+
 /// Layout flashcards into a list of pages, where each page has a front and back
 #let layout_cards(rows, columns, definitions) = {
-    return definitions.chunks(rows.len() * rows.len() * 2).map(cardset => (
-        front: cardset.chunks(2).map(def => def.at(0)),
-        back: padto(cardset.chunks(2).map(it => it.at(1)), columns.len()).chunks(columns.len()).map(chunk => chunk.rev()).flatten()
+    return definitions.chunks(rows * columns * 2).map(defs => (
+        front: every_nth(defs, 2),
+        back: padto(every_nth(defs, 2, offset: 1), columns).chunks(columns).map(chunk => chunk.rev()).flatten()
     ))
 }
 
@@ -47,13 +49,9 @@
     #if (rows == auto) { rows = range(calc.floor((lay.height / card.height))).map(_ => card.height) }
     #if (cols == auto) { cols = range(calc.floor((lay.width / card.width))).map(_ => card.width)}
 
-    #set grid(
-        rows: rows,
-        columns: cols,
-        // stroke: 1pt
-    )
+    #set grid(rows: rows, columns: cols)
 
-    #for (front, back) in layout_cards(rows, cols, definitions) {
+    #for (front, back) in layout_cards(rows.len(), cols.len(), definitions) {
         set text(lang: lang.front)
         grid(stroke: 1pt, ..front.map(display))
         colbreak()
