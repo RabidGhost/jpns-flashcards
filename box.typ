@@ -19,26 +19,32 @@
       rows: (tab, depth, width, depth, width),
       grid.cell(" ", x: 0, y: 0, stroke: none),
       grid.cell(" ", x: 0, y: 1, stroke: none),
-      grid.cell(" ", x: 1, y: 0, stroke: none),
-      grid.cell(" ", x: 3, y: 0, stroke: none),
-      grid.cell(" ", x: 4, y: 0, stroke: none),
-      grid.cell(" ", x: 3, y: 1, stroke: none),
-      grid.cell(" ", x: 4, y: 1, stroke: none),
-      grid.cell(" ", x: 3, y: 3, stroke: none),
-      grid.cell(" ", x: 4, y: 3, stroke: none),
-      grid.cell(" ", x: 3, y: 4, stroke: none),
+      grid.cell("Stick me!", x: 0, y: 2, align: center, inset: (width / 2)),
+
       grid.cell(" ", x: 0, y: 3, stroke: none),
       grid.cell(" ", x: 0, y: 4, stroke: none),
-      grid.cell(" ", x: 1, y: 4, stroke: none),
-      grid.cell(" ", x: 4, y: 4, stroke: none),
 
-      grid.cell("Stick me!", x: 2, y: 0, align: center),
-
-      grid.cell(" ", x: 2, y: 1, stroke: (y: (dash: "dashed"))),
+      grid.cell(" ", x: 1, y: 0, stroke: none),
+      grid.cell("Stick me!", x: 1, y: 1, align: center, inset: 10pt),
       grid.cell(" ", x: 1, y: 2, stroke: (dash: "dashed")),
+      grid.cell("Stick me!", x: 1, y: 3, align: center, inset: 10pt),
+      grid.cell(" ", x: 1, y: 4, stroke: none),
+
+      grid.cell("Stick me!", x: 2, y: 0, align: center, inset: (tab / 2)),
+      grid.cell(" ", x: 2, y: 1, stroke: (y: (dash: "dashed"))),
       grid.cell(" ", x: 2, y: 2, stroke: (dash: "dashed")),
-      grid.cell(" ", x: 3, y: 2, stroke: (right: (dash: "dashed"))),
       grid.cell(" ", x: 2, y: 3, stroke: (y: (dash: "dashed"))),
+
+      grid.cell(" ", x: 3, y: 0, stroke: none),
+      grid.cell(" ", x: 3, y: 1, stroke: none),
+      grid.cell(" ", x: 3, y: 2, stroke: (right: (dash: "dashed"))),
+      grid.cell(" ", x: 3, y: 3, stroke: none),
+      grid.cell(" ", x: 3, y: 4, stroke: none),
+
+      grid.cell(" ", x: 4, y: 0, stroke: none),
+      grid.cell(" ", x: 4, y: 1, stroke: none),
+      grid.cell(" ", x: 4, y: 3, stroke: none),
+      grid.cell(" ", x: 4, y: 4, stroke: none),
     )
   })
 
