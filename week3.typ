@@ -44,7 +44,7 @@
   card([library], [としょかん]),
   card([name], [なまえ]),
   card([what], [なん、　なに], jinfo: [何]),
-  card([party], [パーチイー]),
+  card([party], [パーチィー]),
   card([person, people], [ひと], jinfo: [人]),
   card([pen], [ペン]),
   card([hat], [ほうし]),
