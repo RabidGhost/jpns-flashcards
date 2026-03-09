@@ -1,10 +1,3 @@
-/// Default card size
-#let card-size = (
-  width: 91mm,
-  height: 55mm,
-)
-
-
 #let card(english, einfo: [], japanese, jinfo: []) = (
   front: english,
   front-info: einfo,
@@ -37,10 +30,7 @@
     .chunks(rows * columns)
     .map(defs => (
       front: defs.map(frontface),
-      back: padto(defs.map(backface), columns)
-        .chunks(columns)
-        .map(chunk => chunk.rev())
-        .flatten(),
+      back: padto(defs.map(backface), columns).chunks(columns).map(chunk => chunk.rev()).flatten(),
     ))
 }
 
@@ -60,24 +50,41 @@
   columns: auto,
   alignment: center,
   display: flashcard,
-  card: card-size,
+  card: (
+    width: auto,
+    height: auto,
+  ),
   lang: (front: "en", back: "en"),
   border-stroke: 0.2pt + gray,
   definitions,
 ) = align(alignment, layout(lay => [
   #let rows = rows
   #let cols = columns
+  #let card = card
 
-  #if (rows == auto) {
-    rows = range(calc.floor((lay.height / card.height))).map(_ => card.height)
+  #if (rows == auto and card.height != auto) {
+    rows = calc.floor((lay.height / card.height))
+  } else if (card.height == auto) {
+    // if `rows` is also `auto` then set it to 1
+    if (rows == auto) {
+      rows = 1
+    }
+    card.height = lay.height / rows
   }
-  #if (cols == auto) {
-    cols = range(calc.floor((lay.width / card.width))).map(_ => card.width)
+
+  #if (cols == auto and card.width != auto) {
+    cols = calc.floor((lay.width / card.width))
+  } else if (card.width == auto) {
+    // if `cols` is also `auto` then set it to 1
+    if (cols == auto) {
+      cols = 1
+    }
+    card.width = lay.width / cols
   }
 
-  #set grid(rows: rows, columns: cols)
+  #set grid(rows: range(rows).map(_ => (card.height)), columns: range(cols).map(_ => (card.width)))
 
-  #for (front, back) in layout_cards(rows.len(), cols.len(), definitions) {
+  #for (front, back) in layout_cards(rows, cols, definitions) {
     set text(lang: lang.front)
     grid(stroke: border-stroke, ..front.map(display))
     colbreak()
