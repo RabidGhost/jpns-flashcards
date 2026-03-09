@@ -1,15 +1,14 @@
 #import "template.typ": flashcards, card
 
-#set page(margin: 10mm)
 
+// CONSTS TO CHANGE IF USING DIFFERENT IMAGES
 #let flashcard_filename_start = "Hiragana-Memory-HInt-Flash-Card-PDF/1773028933297-fc030297-b8ca-40d5-b4be-92b13b6dfa98_"
-
 #let flashcard_filename_end = ".jpg"
 
 #let image_count = 92
 
 
-
+#set page(margin: 10mm)
 
 #let definitions = ()
 
@@ -18,7 +17,7 @@
   let front = flashcard_filename_start+ str(n)+ flashcard_filename_end
   let back = flashcard_filename_start+ str(n+1)+ flashcard_filename_end
   definitions.push(
-  card(image(front), image(back))
+    card(image(front), image(back))
   )
     n = n + 2
   }
