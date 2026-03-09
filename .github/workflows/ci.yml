@@ -7,18 +7,17 @@ on:
     paths:
       - "*.typ"
 
-env:
-  GIT_TRACE: "1"
-
 jobs:
   typstyle:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
     steps:
-      - uses: actions/checkout@v6
-        with:
-          path: pull-request
+      - name: Fetch PR branch
+        run: |
+          gh pr checkout ${{ github.event.number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Run typstyle
         uses: typstyle-rs/typstyle-action@main
         with:
