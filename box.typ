@@ -22,11 +22,10 @@
       rows: (tab, depth, width, depth, width),
 
       grid.cell(" ", x: 0, y: 0, stroke: none),
-      grid.cell(gluing_text, x: 0, y: 1, align: center, inset: 10pt, stroke: (right: fold_lines)),
-      grid.cell(" ", x: 0, y: 2, stroke: (right: fold_lines)),
-      grid.cell(gluing_text, x: 0, y: 3, align: center, inset: 10pt, stroke: (right: fold_lines)),
-      // grid.cell(" ", x: 0, y: 4, stroke: none),
-      grid.cell(gluing_text, x: 0, y: 4, align: center, inset: (width / 2), stroke: (right: fold_lines)),
+      grid.cell(gluing_text, x: 0, y: 1, align: horizon, inset: 10pt, stroke: (right: fold_lines)),
+      grid.cell(gluing_text, x: 0, y: 2, align: horizon, stroke: (right: fold_lines)),
+      grid.cell(gluing_text, x: 0, y: 3, align: horizon, inset: 10pt, stroke: (right: fold_lines)),
+      grid.cell("", x: 0, y: 4, stroke: (right: fold_lines)),
 
       grid.cell(gluing_text, x: 1, y: 0, align: center, inset: (tab / 2)),
       grid.cell(" ", x: 1, y: 1, stroke: (y: fold_lines)),
