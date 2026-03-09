@@ -20,4 +20,4 @@ jobs:
       - name: Run typstyle
         uses: typstyle-rs/typstyle-action@main
         with:
-          opts: ["--check"]
+          opts: "--check"
