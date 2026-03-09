@@ -54,7 +54,13 @@
   card([slowly], [ゆっくり]),
 )
 
+#let card-size = (
+  width: 91mm,
+  height: 55mm,
+)
+
 #flashcards(
   lang: (front: "en", back: "jp"),
   definitions,
+  card: card-size,
 )
