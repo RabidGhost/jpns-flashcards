@@ -20,11 +20,6 @@
       stroke: (paint: gray, thickness: 0.2pt),
       columns: (depth, height, depth, flap),
       rows: (tab, depth, width, depth, width),
-      // grid.cell(" ", x: 0, y: 0, stroke: none),
-      // grid.cell(" ", x: 0, y: 1, stroke: none),
-      // grid.cell(gluing_text, x: 0, y: 2, align: center, inset: (width / 2)),
-      // grid.cell(" ", x: 0, y: 3, stroke: none),
-      // grid.cell(" ", x: 0, y: 4, stroke: none),
 
       grid.cell(" ", x: 0, y: 0, stroke: none),
       grid.cell(gluing_text, x: 0, y: 1, align: center, inset: 10pt, stroke: (right: fold_lines)),
