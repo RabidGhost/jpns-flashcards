@@ -5,19 +5,11 @@
 
 #let card_depth = 0.5mm
 
-#let box(card-size: none, rows: none, columns: none, cards_count: int) = {
+#let box(card-size: none, cards_count: int) = {
   layout(lay => {
-    let width = none
-    let height = none
+    let width = card-size.width + buffer
+    let height = card-size.height + buffer
     let depth = cards_count * card_depth
-    if card-size != none {
-      width = card-size.width + buffer
-      height = card-size.height + buffer
-    } else {
-      // TODO: no rows/cols?
-      width = (lay.width / columns) + buffer
-      height = (lay.height / rows) + buffer
-    }
 
 
     grid(
