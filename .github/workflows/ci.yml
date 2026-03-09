@@ -13,10 +13,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
+      - uses: actions/checkout@v6
         with:
-          ref: ${{ github.head_ref }}
+          path: pull-request
       - name: Run typstyle
         uses: typstyle-rs/typstyle-action@main
         with:
