@@ -24,16 +24,9 @@
   }
 
 
-
-#let card-size= (
-    width: 63mm,
-    height: 90mm,
-)
 #flashcards(
     lang: (front: "en", back: "jp"),
     definitions,
     columns: 3,
     rows: 3,
-    
-    // card: card-size,
 )
