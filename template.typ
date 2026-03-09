@@ -37,10 +37,7 @@
     .chunks(rows * columns)
     .map(defs => (
       front: defs.map(frontface),
-      back: padto(defs.map(backface), columns)
-        .chunks(columns)
-        .map(chunk => chunk.rev())
-        .flatten(),
+      back: padto(defs.map(backface), columns).chunks(columns).map(chunk => chunk.rev()).flatten(),
     ))
 }
 
@@ -69,15 +66,20 @@
   #let cols = columns
 
   #if (rows == auto) {
-    rows = range(calc.floor((lay.height / card.height))).map(_ => card.height)
+    rows = calc.floor((lay.height / card.height))
+  } else {
+    card.height = lay.height / rows
   }
+
   #if (cols == auto) {
-    cols = range(calc.floor((lay.width / card.width))).map(_ => card.width)
+    cols = calc.floor((lay.width / card.width))
+  } else {
+    card.width = lay.width / cols
   }
 
-  #set grid(rows: rows, columns: cols)
+  #set grid(rows: range(rows).map(_ => (card.height)), columns: range(cols).map(_ => (card.width)))
 
-  #for (front, back) in layout_cards(rows.len(), cols.len(), definitions) {
+  #for (front, back) in layout_cards(rows, cols, definitions) {
     set text(lang: lang.front)
     grid(stroke: border-stroke, ..front.map(display))
     colbreak()
