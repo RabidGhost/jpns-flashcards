@@ -44,7 +44,7 @@
   card([library], [としょかん]),
   card([name], [なまえ]),
   card([what], [なん、　なに], jinfo: [何]),
-  card([party], [パーチイー]),
+  card([party], [パーチィー]),
   card([person, people], [ひと], jinfo: [人]),
   card([pen], [ペン]),
   card([hat], [ほうし]),
@@ -54,7 +54,13 @@
   card([slowly], [ゆっくり]),
 )
 
+#let card-size = (
+  width: 91mm,
+  height: 55mm,
+)
+
 #flashcards(
   lang: (front: "en", back: "jp"),
   definitions,
+  card: card-size,
 )

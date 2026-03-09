@@ -1,10 +1,3 @@
-/// Default card size
-#let card-size = (
-  width: 91mm,
-  height: 55mm,
-)
-
-
 #let card(english, einfo: [], japanese, jinfo: []) = (
   front: english,
   front-info: einfo,
@@ -57,7 +50,10 @@
   columns: auto,
   alignment: center,
   display: flashcard,
-  card: card-size,
+  card: (
+    width: auto,
+    height: auto,
+  ),
   lang: (front: "en", back: "en"),
   border-stroke: 0.2pt + gray,
   definitions,
@@ -66,15 +62,23 @@
   #let cols = columns
   #let card = card
 
-  #if (rows == auto) {
+  #if (rows == auto and card.height != auto) {
     rows = calc.floor((lay.height / card.height))
-  } else {
+  } else if (card.height == auto) {
+    // if `rows` is also `auto` then set it to 1
+    if (rows == auto) {
+      rows = 1
+    }
     card.height = lay.height / rows
   }
 
-  #if (cols == auto) {
+  #if (cols == auto and card.width != auto) {
     cols = calc.floor((lay.width / card.width))
-  } else {
+  } else if (card.width == auto) {
+    // if `cols` is also `auto` then set it to 1
+    if (cols == auto) {
+      cols = 1
+    }
     card.width = lay.width / cols
   }
 
