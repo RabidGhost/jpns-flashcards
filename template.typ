@@ -64,6 +64,7 @@
 ) = align(alignment, layout(lay => [
   #let rows = rows
   #let cols = columns
+  #let card = card
 
   #if (rows == auto) {
     rows = calc.floor((lay.height / card.height))
