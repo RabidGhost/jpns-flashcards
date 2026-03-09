@@ -45,17 +45,15 @@
   ]
 }
 
-#let default_card = (
-  width: auto,
-  height: auto,
-)
-
 #let flashcards(
   rows: auto,
   columns: auto,
   alignment: center,
   display: flashcard,
-  card: default_card,
+  card: (
+    width: auto,
+    height: auto,
+  ),
   lang: (front: "en", back: "en"),
   border-stroke: 0.2pt + gray,
   definitions,
