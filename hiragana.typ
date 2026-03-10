@@ -1,4 +1,4 @@
-#import "template.typ": flashcards, card
+#import "template.typ": card, flashcards
 
 
 // CONSTS TO CHANGE IF USING DIFFERENT IMAGES
@@ -14,21 +14,21 @@
 #let definitions = ()
 
 #let n = 1
-#while n < image_count{
+#while n < image_count {
   // This assumes each side is offset by one.
   // So the fronts are 1,3,5 ect and backs are 2,4,6 ect
   let front = flashcard_filename_start + str(n) + flashcard_filename_end
-  let back = flashcard_filename_start + str(n+1) + flashcard_filename_end
+  let back = flashcard_filename_start + str(n + 1) + flashcard_filename_end
   definitions.push(
-    card(image(front), image(back))
+    card(image(front), image(back)),
   )
-    n = n + 2
-  }
+  n = n + 2
+}
 
 
 #flashcards(
-    lang: (front: "en", back: "jp"),
-    definitions,
-    columns: 3,
-    rows: 3,
+  definitions,
+  columns: 4,
+  rows: 4,
+  create-box: true,
 )
