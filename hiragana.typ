@@ -9,7 +9,10 @@
 #let image_count = 92
 
 
-#set page(margin: 10mm)
+#set page(margin: 10mm, number-align: left, numbering: "1 of 1")
+
+#set text(font: "IBM Plex Sans", size: 8pt)
+
 
 #let definitions = ()
 
