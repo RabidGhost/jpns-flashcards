@@ -30,5 +30,4 @@
   definitions,
   columns: 4,
   rows: 4,
-  create-box: true,
 )
