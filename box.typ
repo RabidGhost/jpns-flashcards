@@ -7,9 +7,9 @@
 
 #let gluing_text = "Glue here"
 
-#let fold_lines = stroke(paint: silver, dash: "dashed", thickness: 0.2pt)
+#let fold_lines = stroke(paint: gray, dash: "dashed", thickness: 0.2pt)
 
-#let box(card-size: auto, cards_count: int, label: text("Hiragana", font: "IBM Plex Sans", size: 26pt)) = {
+#let box(card-size: auto, cards_count: int, label: text(" ", font: "IBM Plex Sans", size: 26pt)) = {
   layout(lay => {
     let width = card-size.width + buffer
     let height = card-size.height + buffer
