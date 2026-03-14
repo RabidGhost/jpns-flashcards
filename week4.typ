@@ -72,6 +72,27 @@
   card([radio], [ラジオ]),
   card([apple], [りんご]),
   card([restaurant], [レストラン]),
+  card(
+    [could you say it again],
+    einfo: [casual],
+    [もう　いちどう　いって　もらえませんか],
+  ),
+  card(
+    [could you say it again],
+    einfo: [formal],
+    [もう　いちどう　いって　いただけませんか],
+  ),
+  card(
+    [could you speak slowly please],
+    einfo: [casual],
+    [ゆっくり　いって　もらえませんか],
+  ),
+  card(
+    [could you speak slowly please],
+    einfo: [formal],
+    [ゆっくり　いって　いただけませんか],
+  ),
+  card([how do you say 'x' in english], [「x」　って　えいごで　何ですか]),
 )
 
 
