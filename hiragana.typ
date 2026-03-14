@@ -3,7 +3,7 @@
 
 // CONSTS TO CHANGE IF USING DIFFERENT IMAGES
 // Provide the start and end of the filenames, so the iterating number is squished between
-#let flashcard_filename_start = "Hiragana-Memory-HInt-Flash-Card-PDF/1773028933297-fc030297-b8ca-40d5-b4be-92b13b6dfa98_"
+#let flashcard_filename_start = "images/hiragana-mnemonics/1773028933297-fc030297-b8ca-40d5-b4be-92b13b6dfa98_"
 #let flashcard_filename_end = ".jpg"
 // Set how many pages/images there are in total
 #let image_count = 92
