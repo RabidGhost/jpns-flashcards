@@ -34,7 +34,7 @@
   card([classroom], [きょうしつ]),
   card([cake], [ケーキ], jinfo: [けーき]),
   card([coffee], [コーヒー], jinfo: [こーひー]),
-  card([around, about], info: [time], [〜ごろ]),
+  card([around, about], einfo: [time], [〜ごろ]),
   card([soccer], [サッカー], jinfo: [さっかー]),
   card([salad], [サラド], jinfo: [さらど]),
   card([do], [〜します]),
