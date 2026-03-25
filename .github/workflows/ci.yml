@@ -14,10 +14,11 @@ jobs:
       contents: read
     steps:
       - name: Fetch PR branch
-        run: |
-          gh pr checkout ${{ github.event.number }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: Run typstyle
         uses: typstyle-rs/typstyle-action@main
         with:
