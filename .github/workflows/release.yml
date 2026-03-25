@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    tags: "*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Compile flashcards to PDF
+        run: find flashcards -name "*.typ" -exec typst compile {} --root . \;
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: flashcards/*.pdf
+          body: "release ${{ github.ref_name }} flashcards"
