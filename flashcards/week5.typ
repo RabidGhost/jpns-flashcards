@@ -1,4 +1,4 @@
-#import "template.typ": card, flashcards
+#import "../template.typ": card, flashcards
 
 #set page(margin: 1cm)
 #set text(size: 15pt)
