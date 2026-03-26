@@ -23,8 +23,17 @@ jobs:
       - name: Compile flashcards to PDF
         run: find flashcards -name "*.typ" -exec typst compile {} --root . \;
 
-      - name: Create GitHub Release
+      - name: Generate release notes
+        run: |
+          echo "release ${{ github.ref_name }} flashcards" > release-notes.md
+          echo "" >> release-notes.md
+          for pdf in flashcards/*.pdf; do
+            name=$(basename "$pdf")
+            echo "- [${name}](https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/${name})" >> release-notes.md
+          done
+
+      - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: flashcards/*.pdf
-          body: "release ${{ github.ref_name }} flashcards"
+          body_path: release-notes.md
