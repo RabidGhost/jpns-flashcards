@@ -58,7 +58,10 @@
     height: auto,
   ),
   lang: (front: "en", back: "en"),
-  font: (front: "IBM Plex Sans", back: ("Hiragino Sans", "Noto Sans CJK JP")),
+  font: (
+    front: ("IBM Plex Sans", "Arial"),
+    back: ("Hiragino Sans", "Noto Sans JP", "Noto Sans CJK JP"),
+  ),
   border-stroke: 0.2pt + gray,
   definitions,
 ) = align(alignment, layout(lay => [
