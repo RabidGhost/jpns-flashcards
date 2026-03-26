@@ -3,8 +3,6 @@
 #set page(margin: 1cm)
 #set text(size: 15pt)
 
-#show text.where(lang: "en"): set text(font: "IBM Plex Sans")
-#show text.where(lang: "jp"): set text(font: "Hiragino Sans")
 
 #let definitions = (
   card([oh, ah], [あ]),

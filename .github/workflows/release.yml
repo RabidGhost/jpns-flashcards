@@ -17,6 +17,9 @@ jobs:
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
 
+      - name: Install fonts
+        run: sudo apt-get install -y fonts-ibm-plex fonts-noto-cjk
+
       - name: Compile flashcards to PDF
         run: find flashcards -name "*.typ" -exec typst compile {} --root . \;
 

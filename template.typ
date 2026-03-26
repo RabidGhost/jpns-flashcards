@@ -58,6 +58,7 @@
     height: auto,
   ),
   lang: (front: "en", back: "en"),
+  font: (front: "IBM Plex Sans", back: ("Hiragino Sans", "Noto Sans CJK JP")),
   border-stroke: 0.2pt + gray,
   definitions,
 ) = align(alignment, layout(lay => [
@@ -92,10 +93,10 @@
   )
 
   #for (front, back) in layout_cards(rows, cols, definitions) {
-    set text(lang: lang.front)
+    set text(lang: lang.front, font: font.front)
     grid(stroke: border-stroke, ..front.map(display))
     colbreak()
-    set text(lang: lang.back)
+    set text(lang: lang.back, font: font.back)
     grid(..back.map(display))
   }
 ]))
