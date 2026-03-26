@@ -30,7 +30,10 @@
     .chunks(rows * columns)
     .map(defs => (
       front: defs.map(frontface),
-      back: padto(defs.map(backface), columns).chunks(columns).map(chunk => chunk.rev()).flatten(),
+      back: padto(defs.map(backface), columns)
+        .chunks(columns)
+        .map(chunk => chunk.rev())
+        .flatten(),
     ))
 }
 
@@ -82,7 +85,11 @@
     card.width = lay.width / cols
   }
 
-  #set grid(rows: range(rows).map(_ => (card.height)), columns: range(cols).map(_ => (card.width)), inset: 0.2pt)
+  #set grid(
+    rows: range(rows).map(_ => (card.height)),
+    columns: range(cols).map(_ => (card.width)),
+    inset: 0.2pt,
+  )
 
   #for (front, back) in layout_cards(rows, cols, definitions) {
     set text(lang: lang.front)
