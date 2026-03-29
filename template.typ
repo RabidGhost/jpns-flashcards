@@ -1,3 +1,12 @@
+#import "box.typ": box
+
+/// Default card size
+#let card-size = (
+  width: 91mm,
+  height: 55mm,
+)
+
+
 #let card(english, einfo: [], japanese, jinfo: []) = (
   front: english,
   front-info: einfo,
@@ -63,6 +72,7 @@
     back: ("Hiragino Sans", "Noto Sans JP", "Noto Sans CJK JP"),
   ),
   border-stroke: 0.2pt + gray,
+  create-box: false,
   definitions,
 ) = align(alignment, layout(lay => [
   #let rows = rows
@@ -101,5 +111,9 @@
     colbreak()
     set text(lang: lang.back, font: font.back)
     grid(..back.map(display))
+  }
+
+  #if (create-box == true) {
+    box(card-size: card, cards_count: definitions.len())
   }
 ]))
