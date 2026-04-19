@@ -1,3 +1,15 @@
+#import "@preview/rubby:0.10.2": get-ruby
+
+/// Add *furigana* to text
+#let furi = get-ruby(
+  size: 0.5em, // Ruby font size
+  dy: 2pt, // Vertical offset of the ruby
+  pos: top, // Ruby position (top or bottom)
+  alignment: "center", // Ruby alignment ("center", "start", "between", "around")
+  delimiter: "|", // The delimiter between words
+  auto-spacing: true, // Automatically add necessary space around words
+)
+
 #let card(english, einfo: [], japanese, jinfo: []) = (
   front: english,
   front-info: einfo,
