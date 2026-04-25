@@ -1,6 +1,6 @@
 #import "../template.typ": card, flashcards
 
-#set page(margin: 1cm)
+#set page(margin: 1cm, numbering: "1 of 1")
 #set text(size: 15pt)
 
 
