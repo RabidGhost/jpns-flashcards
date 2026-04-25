@@ -10,6 +10,13 @@
   auto-spacing: true, // Automatically add necessary space around words
 )
 
+#let kata(katakana, hiragana) = {
+  let kata = katakana.text.clusters().join("|")
+  let hira = hiragana.text.clusters().join("|")
+
+  furi(hira, kata)
+}
+
 #let card(english, einfo: [], japanese, jinfo: []) = (
   front: english,
   front-info: einfo,
